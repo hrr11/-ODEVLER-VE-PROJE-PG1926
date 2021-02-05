@@ -1,1 +1,86 @@
+webKullanim = "qwertyuopasdfghjklizxcvbnm0123456789"
+kullaniciAdiKullanim = "qwertyuopasdfghjklizxcvbnm0123456789-_"
+noktaSonuKullanim = "qwertyuopasdfghjklizxcvbnm."
 
+def mailDogrulama(mailAdres, uzunluk):
+
+    try:
+        at = mailAdres.find("@")
+        atCount = mailAdres.count("@")
+        nokta = mailAdres.find(".")
+        uzunlukSayisi = mailAdres.count(".") + 1
+
+        if uzunlukSayisi != uzunluk:
+            return False
+        elif uzunluk > 3 or uzunluk < 1:
+            return False
+        elif at == -1:
+            return False
+        elif atCount != 1:
+            return False
+
+        for i in mailAdres[:at]:
+            if kullaniciAdiKullanim.find(i) == -1:
+                return False
+
+
+        if uzunluk == 1:
+            for i in mailAdres[at+1:]:
+                if webKullanim.find(i) == -1:
+                    return False
+
+        elif uzunluk > 1:
+            for i in mailAdres[at+1:nokta]:
+                if webKullanim.find(i) == -1:
+                    return False
+
+            for i in mailAdres[nokta+1:]:
+                if noktaSonuKullanim.find(i) == -1:
+                    return False
+
+            if uzunluk == 2:
+                if len(mailAdres[nokta+1:]) != 3:
+                    inputUzanti = input("Uzantiniz 3 haneli mi (evet,hayir): ")
+                    if  inputUzanti == "hayir" or inputUzanti == "Hayir":
+                        pass
+                    else:
+                        return False
+
+        elif uzunluk == 3:
+            if len(mailAdres[nokta+1:-3]) != 3:
+                inputUzanti = input("Uzantınız 3 haneli mi (evet,hayir): ")
+                if  inputUzanti == "hayir" or inputUzanti == "Hayir":
+                    pass
+                else:
+                    return False
+
+            ulkeKod = 0
+            for i in mailAdres[::-1]:
+                if i == ".":
+                    break
+                ulkeKod += 1
+
+            if ulkeKod != 2:
+                return False
+    except:
+        return False
+
+    return True
+        
+try:
+    print("""-------Mail Doğrulayici-------
+Açıklama : kullaniciadi@websiteadi.uzanti.ulkekodu
+Uzunluk Örnekleri:  gyildirim20@ku.edu.tr (3)
+                    gyildirim20@ku.edu    (2)
+                    gyildirim20@ku        (1)\n""")  
+    lenUzunluk = int(input("Uzunluk ([1,3] araligi) : "))
+    mail = input("Mail adresinizi giriniz:")
+
+    if mailDogrula(mail,lenUzunluk):
+        print("\nMail adresiniz uygundur.")
+
+    else:
+        print("\nMail adresiniz uygun degildir.")
+
+except:
+    print("Dogru bilgi girdiginizden emin olun")
