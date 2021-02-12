@@ -6,3 +6,86 @@
 	<string>https://cdn.discordapp.com/attachments/809853193282388030/809854570217078794/main.css</string>
 </dict>
 </plist>
+
+
+
+
+
+body,h1,ul,li{
+    margin: 0;
+    padding: 0;
+}
+ 
+body{
+    background: #86af49;
+    font-family: sans-serif;
+}
+ 
+.sayfa{
+    width: 950px;
+    margin:50px auto;
+}
+ 
+#baslik{
+    float: left;
+    font-size: 1.2em;
+    color: white;
+    text-decoration: none;
+}
+ 
+#menu{
+    float: right;
+    list-style: none;
+    margin-top: 1em;
+}
+ 
+#menu li{
+    float: left;
+    
+}
+ 
+#menu li a{
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+    padding: 10px 20px;
+}
+ 
+#menu a:hover{
+    background:green;
+    border-radius: 15px;
+}
+ 
+.orta{
+    width: 906px;
+    margin-top: 15px;
+    background:green;
+ 
+}
+ 
+.orta-sol{
+    float: left;
+    width: 450px;
+}
+ 
+ 
+.orta-sag{
+    float: left;
+    margin: 15px;
+    width: 870px;
+    color: #bbb;
+}
+ 
+.alt{
+    background: #86af49;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+.alt a{
+     color: #fff;
+}
+ 
+.temizle{
+    clear: both;
+}
